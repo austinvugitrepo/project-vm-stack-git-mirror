@@ -1,0 +1,20 @@
+
+// on jelly server
+
+freebsd:
+	ssh -p 2222 vmuser1@jelly
+        pass: vm1
+netbsd:
+	ssh -p 2223 austin@jelly
+	pass: 1234567890
+rhel:
+	ssh -p 2224 vmuser2@jelly
+	pass: vmuser2
+solaris:
+	ssh -p 2225 vmuser3@jelly
+	pass: vmuser3
+dragonflybsd:
+	ssh -p 2226 vmuser4@jelly
+	pass: vmuser4
+
+

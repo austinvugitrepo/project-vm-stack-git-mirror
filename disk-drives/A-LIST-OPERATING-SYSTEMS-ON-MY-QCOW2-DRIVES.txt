@@ -1,0 +1,11 @@
+# A LIST OF OPERATING SYSTEMS ON MY QCOW2 DRIVES 
+
+This file is made to document and remind me how many operating systems are on my drives, and if i forget i can use this list to remember which drive
+belongs to which os, if the names dont ring a bell for future me. If viewing on a git mirror, drives obviously will not be present
+
++ 1. FreeBSD
++ 2. NetBSD
++ 3. RHEL
++ 4. Solaris CBE
++ 5. DragonflyBSD
+

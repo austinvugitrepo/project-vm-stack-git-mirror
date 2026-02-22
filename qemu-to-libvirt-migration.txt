@@ -1,0 +1,51 @@
+
+//example for installing solaris vm (without configuration to network...adding network right away seemed to not work for me.)
+// virt install will not be exact so if starting vm via virsh start (vm-name) doesnt work, edit the xml via virsh edit (vm-name) and to shutdown the vm do virsh shutdown (vm-name)
+ virt-install \
+  --name solaris-vm \
+  --virt-type kvm \
+  --machine pc-i440fx-10.2
+  --memory 8192 \
+  --vcpus 4 \
+  --cpu host-passthrough \
+  --disk path=/home/austin/project-vm-stack/disk-drives/solaris.qcow2,bus=virtio,format=qcow2 \
+  --import \
+  --os-variant solaris11 \
+  --network none \
+  --graphics none \
+  --serial pty \
+  --console pty,target_type=serial \
+  --check path_in_use=off
+
+to find os variant use: virt-install --osinfo list (use grep to make it easier to find)
+
+//to add networking to virt installation:
+
+virsh shutdown solaris-vm
+virsh edit solaris-vm
+
+remove line one of xml to this:
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+
+
+add right above the very last line (the domain line) P.S Remember also did not copy this word for word make sure it matches ur original script!:
+<qemu:commandline>
+    <qemu:arg value='-netdev'/>
+    <qemu:arg value='user,id=net0,hostfwd=tcp:0.0.0.0:2225-:22'/>
+    <qemu:arg value='-device'/>
+    <qemu:arg value='virtio-net-pci,netdev=net0'/>
+  </qemu:commandline>
+//right after adding the qemu cli the vm might suddenly not boot, simply just remove the part in the xml where the controller portion is,
+from where it says controller from the beginning to where controller last stops, only solaris and redhat seemed to not have this issue for me.
+
+to port libvirt config:
+virsh dumpxml solaris-vm > solaris.xml
+
+to unregister a vm:
+virsh undefine (vm-name)
+
+to register a vm with the xml:
+virsh define solaris.xml
+
+to list vms:
+virsh list --all (remove --all for just active ones)

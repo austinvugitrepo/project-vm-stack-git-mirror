@@ -1,0 +1,7 @@
+# when these vms ran standalone
+
+30 12 * * * /home/austin/cron-scripts/rhel-script.sh
+0 0 * * * /home/austin/cron-scripts/cbe-solaris.sh
+20 4 * * * /home/austin/cron-scripts/freebsd.sh
+0 12 * * * /home/austin/cron-scripts/netbsd-vm-on-server.sh
+25 15 * * * /home/austin/cron-scripts/dragonfly.sh

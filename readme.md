@@ -36,6 +36,10 @@ virsh start freebsd
 
 ```
 
+# OpenBSD VMM hypervisor config
+
+This is exclusive to **OpenBSD** and can be found under the vmm hypervisor folder which contains my vm specifications for launching them
+
 **NOTE:** I will not provide the actual qcow2s because well...They are my vms, you can make your own qcow2s tho and use my configurations if you like :D
 
 
